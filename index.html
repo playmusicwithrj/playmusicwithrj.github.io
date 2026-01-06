@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Music With RJ - Premium Streaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="music-note">♪</div>
+        <div class="music-note">♫</div>
+        <div class="music-note">♬</div>
+        <div class="music-note">♪</div>
+        <div class="music-note">♫</div>
+        <div class="music-note">♬</div>
+        <div class="music-note">♪</div>
+        <div class="music-note">♫</div>
+        <div class="music-note">♬</div>
+        <div class="sound-wave"></div>
+        <div class="sound-wave"></div>
+        <div class="sound-wave"></div>
+    </div>
+
+    <!-- Intro Screen -->
+    <div id="introScreen">
+        <div id="welcomeText">Welcome To RJ Music</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-play-circle"></i>
+                Play Music With RJ
+            </div>
+            
+            <!-- TASK: Added Navigation Menu -->
+            <nav class="main-nav">
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="about">About Us</a>
+                <a href="#" class="nav-link" data-page="legal">Legal & Terms</a>
+                <a href="#" class="nav-link" data-page="privacy">Privacy Policy</a>
+            </nav>
+            
+            <div class="tagline">Premium Sound Experience</div>
+        </header>
+
+        <!-- Home Page Content (Default) -->
+        <section id="homePage" class="page-content active">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="container">
+                    <h2 class="section-title">Discover Your Sound</h2>
+                    <div class="search-box">
+                        <div class="input-group">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search your music">
+                            <button id="playBtn">
+                                <i class="fas fa-play"></i> Play
+                            </button>
+                        </div>
+                        <div class="examples">
+                            <span>Simply search or enter a music URL</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Player Section -->
+            <section class="player-section">
+                <div class="container">
+                    <h2 class="section-title">Now Playing</h2>
+                    <div class="player-container">
+                        <div class="player-left">
+                            <div class="album-art">
+                                <div class="vinyl-disc">
+                                    <div class="vinyl">
+                                        <div class="vinyl-inner"></div>
+                                        <div class="vinyl-center"></div>
+                                    </div>
+                                    <div class="album-cover" id="albumCover">
+                                        <i class="fas fa-music"></i>
+                                    </div>
+                                </div>
+                                <div class="equalizer">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="player-right">
+                            <div class="song-info">
+                                <h3 id="songTitle">Ready to Play</h3>
+                                <p id="artistName">Search for music above to start</p>
+                            </div>
+                            
+                            <div class="player-controls">
+                                <button class="control-btn" id="prevBtn">
+                                    <i class="fas fa-step-backward"></i>
+                                </button>
+                                <button class="control-btn play-pause" id="playPauseBtn">
+                                    <i class="fas fa-play" id="playIcon"></i>
+                                </button>
+                                <button class="control-btn" id="nextBtn">
+                                    <i class="fas fa-step-forward"></i>
+                                </button>
+                                <button class="control-btn" id="volumeBtn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="progress-container">
+                                <div class="progress-bar" id="progressBar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                    <div class="progress-thumb" id="progressThumb"></div>
+                                </div>
+                                <div class="time-display">
+                                    <span id="currentTime">0:00</span>
+                                    <span id="totalTime">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hidden Player -->
+                    <div class="youtube-container">
+                        <iframe id="youtubePlayer" style="display: none;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Playlists -->
+            <section class="playlists-section">
+                <div class="container">
+                    <h2 class="section-title">Featured Playlists</h2>
+                    <div class="playlists-grid">
+                        <div class="playlist-card floating">
+                            <div class="playlist-img" style="background: linear-gradient(45deg, #00a8ff, #0097e6);">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4>Top Hits 2024</h4>
+                            <p>Latest chart toppers</p>
+                        </div>
+                        <div class="playlist-card floating">
+                            <div class="playlist-img" style="background: linear-gradient(45deg, #00a8ff, #8c7ae6);">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <h4>Chill Vibes</h4>
+                            <p>Relax and unwind</p>
+                        </div>
+                        <div class="playlist-card floating">
+                            <div class="playlist-img" style="background: linear-gradient(45deg, #00a8ff, #e84118);">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h4>Energy Boost</h4>
+                            <p>High tempo tracks</p>
+                        </div>
+                        <div class="playlist-card floating">
+                            <div class="playlist-img" style="background: linear-gradient(45deg, #00a8ff, #44bd32);">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <h4>Focus Flow</h4>
+                            <p>Concentration beats</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- About Us Page -->
+        <section id="aboutPage" class="page-content">
+            <div class="container">
+                <div class="page-header">
+                    <h2 class="section-title">About Us</h2>
+                    <p class="page-subtitle">Our Story & Mission</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>To create the world's most immersive and accessible music streaming experience, connecting people through the universal language of music.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>We're dedicated to providing premium sound quality with an intuitive interface that makes discovering and enjoying music effortless for everyone.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Our Community</h3>
+                        <p>Join millions of music lovers worldwide who trust RJ Music for their daily soundtrack, from workout sessions to relaxing evenings.</p>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10M+</div>
+                            <div class="stat-label">Active Listeners</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50M+</div>
+                            <div class="stat-label">Songs Streamed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Service Uptime</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Genres Available</div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-section">
+                        <h3>Meet Our Team</h3>
+                        <div class="team-grid">
+                            <div class="team-member">
+                                <div class="member-avatar" style="background: linear-gradient(45deg, #00a8ff, #0097e6);">
+                                    RJ
+                                </div>
+                                <h4>Rajesh Kumar</h4>
+                                <p>Founder & Lead Developer</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar" style="background: linear-gradient(45deg, #00a8ff, #8c7ae6);">
+                                    SM
+                                </div>
+                                <h4>Smitha Menon</h4>
+                                <p>UI/UX Designer</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar" style="background: linear-gradient(45deg, #00a8ff, #e84118);">
+                                    AP
+                                </div>
+                                <h4>Ankit Patel</h4>
+                                <p>Audio Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal & Terms Page -->
+        <section id="legalPage" class="page-content">
+            <div class="container">
+                <div class="page-header">
+                    <h2 class="section-title">Legal & Terms</h2>
+                    <p class="page-subtitle">Important Information</p>
+                </div>
+                
+                <div class="legal-content">
+                    <div class="legal-card">
+                        <h3><i class="fas fa-balance-scale"></i> Terms of Service</h3>
+                        <p>By using Play Music With RJ, you agree to our Terms of Service. These terms govern your access to and use of our music streaming platform.</p>
+                        <ul>
+                            <li>Service is provided for personal, non-commercial use only</li>
+                            <li>Users must respect copyright and intellectual property rights</li>
+                            <li>We reserve the right to modify or discontinue service at any time</li>
+                            <li>Users are responsible for maintaining account security</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-card">
+                        <h3><i class="fas fa-copyright"></i> Copyright Information</h3>
+                        <p>All music content is provided through third-party media providers. We do not host or store any media files on our servers.</p>
+                        <p>If you believe your copyright has been infringed, please contact us immediately with detailed information about the alleged infringement.</p>
+                    </div>
+                    
+                    <div class="legal-card">
+                        <h3><i class="fas fa-shield-alt"></i> Disclaimer</h3>
+                        <p>Play Music With RJ is provided "as is" without any warranties, express or implied. We do not guarantee uninterrupted service or specific content availability.</p>
+                        <p>The service may contain links to third-party websites or services that are not owned or controlled by us.</p>
+                    </div>
+                    
+                    <div class="legal-card">
+                        <h3><i class="fas fa-gavel"></i> DMCA Compliance</h3>
+                        <p>We comply with the Digital Millennium Copyright Act (DMCA). Copyright infringement notices should be sent to:</p>
+                        <p class="contact-info">
+                            <i class="fas fa-envelope"></i> dmca@yourdomain.com<br>
+                            <i class="fas fa-clock"></i> Response within 48 hours
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Policy Page -->
+        <section id="privacyPage" class="page-content">
+            <div class="container">
+                <div class="page-header">
+                    <h2 class="section-title">Privacy Policy</h2>
+                    <p class="page-subtitle">Your Privacy Matters</p>
+                </div>
+                
+                <div class="privacy-content">
+                    <div class="privacy-card">
+                        <h3><i class="fas fa-user-shield"></i> Data Collection</h3>
+                        <p>We collect minimal information necessary to provide our service:</p>
+                        <ul>
+                            <li>Search queries to find music content</li>
+                            <li>Playback preferences and history</li>
+                            <li>Technical information about your device</li>
+                            <li>Basic usage statistics for service improvement</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-card">
+                        <h3><i class="fas fa-lock"></i> Data Protection</h3>
+                        <p>We implement industry-standard security measures to protect your information:</p>
+                        <ul>
+                            <li>Encryption of sensitive data</li>
+                            <li>Regular security audits</li>
+                            <li>Secure server infrastructure</li>
+                            <li>Limited data retention periods</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-card">
+                        <h3><i class="fas fa-share-alt"></i> Third-Party Services</h3>
+                        <p>Our service integrates with third-party media providers to deliver music content. These providers may have their own privacy policies governing how they handle data.</p>
+                        <p>We recommend reviewing the privacy policies of these third-party services.</p>
+                    </div>
+                    
+                    <div class="privacy-card">
+                        <h3><i class="fas fa-cookie"></i> Cookies & Tracking</h3>
+                        <p>We use essential cookies to maintain your session and preferences. We do not use tracking cookies for advertising purposes.</p>
+                        <p>You can control cookie settings through your browser preferences.</p>
+                    </div>
+                    
+                    <div class="privacy-card">
+                        <h3><i class="fas fa-user-cog"></i> Your Rights</h3>
+                        <p>You have the right to:</p>
+                        <ul>
+                            <li>Access your personal data</li>
+                            <li>Request data correction</li>
+                            <li>Request data deletion</li>
+                            <li>Opt-out of non-essential data collection</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-card">
+                        <h3><i class="fas fa-headset"></i> Contact Us</h3>
+                        <p>For privacy-related inquiries or to exercise your rights:</p>
+                        <p class="contact-info">
+                            <i class="fas fa-envelope"></i> privacy@yourdomain.com<br>
+                            <i class="fas fa-phone"></i> Support: +1 (555) 123-4567<br>
+                            <i class="fas fa-clock"></i> Response time: 24-48 hours
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fas fa-play-circle"></i> Play Music With RJ
+                    </div>
+                    <p>Premium music streaming experience © 2024</p>
+                    
+                    <div class="footer-nav">
+                        <a href="#" class="footer-link" data-page="home">Home</a>
+                        <a href="#" class="footer-link" data-page="about">About Us</a>
+                        <a href="#" class="footer-link" data-page="legal">Legal & Terms</a>
+                        <a href="#" class="footer-link" data-page="privacy">Privacy Policy</a>
+                    </div>
+                    
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-spotify"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+        /* Animated Background */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+        }
+
+        .music-note {
+            position: absolute;
+            color: rgba(0, 168, 255, 0.1);
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatNote 20s linear infinite;
+        }
+
+        .music-note:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .music-note:nth-child(2) {
+            top: 20%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .music-note:nth-child(3) {
+            top: 40%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        .music-note:nth-child(4) {
+            top: 60%;
+            left: 85%;
+            animation-delay: 6s;
+        }
+
+        .music-note:nth-child(5) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 8s;
+        }
+
+        .music-note:nth-child(6) {
+            top: 30%;
+            left: 70%;
+            animation-delay: 10s;
+        }
+
+        .music-note:nth-child(7) {
+            top: 70%;
+            left: 30%;
+            animation-delay: 12s;
+        }
+
+        .music-note:nth-child(8) {
+            top: 50%;
+            left: 90%;
+            animation-delay: 14s;
+        }
+
+        .music-note:nth-child(9) {
+            top: 90%;
+            left: 60%;
+            animation-delay: 16s;
+        }
+
+        @keyframes floatNote {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .sound-wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(transparent, rgba(0, 168, 255, 0.05));
+            animation: waveAnimation 10s ease-in-out infinite;
+        }
+
+        .sound-wave:nth-child(10) {
+            animation-delay: 0s;
+            opacity: 0.3;
+        }
+
+        .sound-wave:nth-child(11) {
+            animation-delay: 2.5s;
+            opacity: 0.2;
+            background: linear-gradient(transparent, rgba(76, 211, 255, 0.05));
+        }
+
+        .sound-wave:nth-child(12) {
+            animation-delay: 5s;
+            opacity: 0.1;
+            background: linear-gradient(transparent, rgba(140, 122, 230, 0.05));
+        }
+
+        @keyframes waveAnimation {
+            0%, 100% {
+                transform: translateY(0) scaleY(1);
+            }
+            50% {
+                transform: translateY(-20px) scaleY(1.2);
+            }
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: transparent;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* TASK: Added Navigation Menu */
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            margin-left: 50px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover {
+            color: #00a8ff;
+            background: rgba(0, 168, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: white;
+            background: linear-gradient(135deg, rgba(0, 168, 255, 0.2), rgba(0, 168, 255, 0.1));
+            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.2);
+        }
+
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00a8ff, transparent);
+            border-radius: 3px;
+        }
+
+        /* Page Content */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .page-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* About Us Page */
+        .about-content {
+            padding: 40px 0 80px;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 168, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 168, 255, 0.1);
+            border-color: rgba(0, 168, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
+        }
+
+        .about-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #00a8ff, #0097e6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 168, 255, 0.3);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+            background: linear-gradient(90deg, #ffffff, #00a8ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 168, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00a8ff, #4cd3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .team-section {
+            margin-top: 60px;
+        }
+
+        .team-section h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 168, 255, 0.1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 168, 255, 0.1);
+            border-color: rgba(0, 168, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 168, 255, 0.2);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-member h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .team-member p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+        }
+
+        /* Legal & Terms Page */
+        .legal-content {
+            padding: 40px 0 80px;
+        }
+
+        .legal-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 168, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .legal-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .legal-card h3 i {
+            color: #00a8ff;
+        }
+
+        .legal-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .legal-card ul {
+            color: rgba(255, 255, 255, 0.8);
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .legal-card li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .contact-info {
+            background: rgba(0, 168, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border-left: 4px solid #00a8ff;
+        }
+
+        .contact-info i {
+            color: #00a8ff;
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        /* Privacy Policy Page */
+        .privacy-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px 0 80px;
+        }
+
+        .privacy-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(0, 168, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .privacy-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 168, 255, 0.1);
+            border-color: rgba(0, 168, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
+        }
+
+        .privacy-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .privacy-card h3 i {
+            color: #00a8ff;
+        }
+
+        .privacy-card p, .privacy-card li {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .privacy-card ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .privacy-card li {
+            margin-bottom: 8px;
+        }
+
+        /* Footer Navigation */
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        .footer-link:hover {
+            color: #00a8ff;
+            background: rgba(0, 168, 255, 0.1);
+        }
+
+        /* Rest of existing CSS remains the same */
+        /* [All previous CSS code from player, search, etc. remains unchanged below] */
+        /* ... Existing CSS continues ... */
+
+        /* Intro Screen */
+        #introScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .letter {
+            position: absolute;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #00a8ff;
+            opacity: 0;
+            text-shadow: 0 0 15px #00a8ff, 0 0 30px #00a8ff;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(0 0 10px rgba(0, 168, 255, 0.7));
+        }
+
+        #welcomeText {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-align: center;
+            opacity: 0;
+            background: linear-gradient(90deg, #00a8ff, #4cd3ff, #00a8ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: premiumGlow 2.5s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            transform-origin: center center;
+            text-shadow: 0 0 30px rgba(0, 168, 255, 0.5),
+                         0 0 60px rgba(0, 168, 255, 0.3),
+                         0 0 90px rgba(0, 168, 255, 0.2);
+        }
+
+        @keyframes premiumGlow {
+            0%, 100% { 
+                background-position: 0% center;
+                filter: brightness(1) drop-shadow(0 0 20px rgba(0, 168, 255, 0.5));
+            }
+            50% { 
+                background-position: 100% center;
+                filter: brightness(1.2) drop-shadow(0 0 30px rgba(0, 168, 255, 0.8));
+            }
+        }
+
+        /* Main Content */
+        #mainContent {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* Header */
+        header {
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 168, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            border-image: linear-gradient(90deg, transparent, rgba(0, 168, 255, 0.4), transparent) 1;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+            background: linear-gradient(90deg, #ffffff, #00a8ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00a8ff, transparent);
+            animation: underline 3s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes underline {
+            0%, 100% { opacity: 0.3; width: 50%; left: 25%; }
+            50% { opacity: 1; width: 100%; left: 0; }
+        }
+
+        .tagline {
+            color: #00a8ff;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.3);
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, 
+                rgba(0, 168, 255, 0.05) 0%, 
+                rgba(10, 10, 15, 0.9) 100%);
+            border-bottom: 1px solid rgba(0, 168, 255, 0.15);
+            animation: fadeInUp 1s ease 0.3s both;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 168, 255, 0.5), 
+                transparent);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            background: linear-gradient(90deg, #ffffff, #00a8ff, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: titleShine 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(0, 168, 255, 0.3);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        @keyframes titleShine {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00a8ff, transparent);
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-box {
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 168, 255, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: borderGlow 4s infinite alternate,
+                       floatCard 6s ease-in-out infinite;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(255, 255, 255, 0.02) 100%);
+        }
+
+        @keyframes borderGlow {
+            0% { 
+                box-shadow: 0 20px 50px rgba(0, 168, 255, 0.15),
+                          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                border-color: rgba(0, 168, 255, 0.3);
+            }
+            100% { 
+                box-shadow: 0 20px 50px rgba(0, 168, 255, 0.3),
+                          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                border-color: rgba(0, 168, 255, 0.6);
+            }
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .input-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-group i {
+            color: #00a8ff;
+            font-size: 1.6rem;
+            align-self: center;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(0, 168, 255, 0.4);
+            border-radius: 15px;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: #00a8ff;
+            box-shadow: 0 0 40px rgba(0, 168, 255, 0.6),
+                        inset 0 0 20px rgba(0, 168, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        #playBtn {
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #00a8ff 0%, #0097e6 100%);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.3);
+        }
+
+        #playBtn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 168, 255, 0.5);
+            background: linear-gradient(135deg, #00b4ff 0%, #00a0ff 100%);
+        }
+
+        #playBtn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        #playBtn:active::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        .examples {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
+        }
+
+        /* Player Section */
+        .player-section {
+            padding: 80px 5%;
+            animation: fadeInUp 1s ease 0.5s both;
+            position: relative;
+        }
+
+        .player-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 168, 255, 0.2) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .player-section.playing::before {
+            width: 500px;
+            height: 500px;
+            opacity: 1;
+        }
+
+        .player-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 30px;
+            padding: 50px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(255, 255, 255, 0.02) 100%);
+        }
+
+        .player-container.playing {
+            transform: scale(1.02);
+            box-shadow: 0 30px 80px rgba(0, 168, 255, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border-color: rgba(0, 168, 255, 0.4);
+        }
+
+        .player-left {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .player-right {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .album-art {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto;
+        }
+
+        .vinyl-disc {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            animation: rotate 20s linear infinite paused;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .vinyl {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #222, #000);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9),
+                        inset 0 0 20px rgba(0, 168, 255, 0.2);
+            overflow: hidden;
+            border: 3px solid rgba(0, 168, 255, 0.3);
+        }
+
+        .vinyl-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #111, #333, #111);
+            border: 3px solid rgba(0, 168, 255, 0.4);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .vinyl-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #00a8ff, #0097e6);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
+            border: 2px solid white;
+        }
+
+        .album-cover {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            height: 65%;
+            background: linear-gradient(135deg, #00a8ff, #0097e6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: white;
+            z-index: 1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+        }
+
+        .album-cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .equalizer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 8px;
+            height: 70px;
+            margin-top: 40px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 168, 255, 0.2);
+        }
+
+        .equalizer .bar {
+            width: 10px;
+            background: linear-gradient(to top, #00a8ff, #4cd3ff);
+            border-radius: 5px;
+            animation: equalizer 1.2s ease infinite alternate;
+            animation-play-state: paused;
+            box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+        }
+
+        .equalizer .bar:nth-child(1) { animation-delay: 0.1s; }
+        .equalizer .bar:nth-child(2) { animation-delay: 0.3s; }
+        .equalizer .bar:nth-child(3) { animation-delay: 0.5s; }
+        .equalizer .bar:nth-child(4) { animation-delay: 0.7s; }
+        .equalizer .bar:nth-child(5) { animation-delay: 0.9s; }
+
+        @keyframes equalizer {
+            0% { 
+                height: 10px;
+                box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+            }
+            100% { 
+                height: 70px;
+                box-shadow: 0 0 20px rgba(0, 168, 255, 0.8);
+            }
+        }
+
+        .song-info {
+            margin-bottom: 50px;
+        }
+
+        #songTitle {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ffffff, #00a8ff, #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleShine 3s ease-in-out infinite;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        #artistName {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
+            font-weight: 300;
+        }
+
+        .player-controls {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            justify-content: center;
+        }
+
+        .control-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(0, 168, 255, 0.5);
+            color: #00a8ff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn:hover {
+            background: rgba(0, 168, 255, 0.25);
+            transform: scale(1.15);
+            box-shadow: 0 0 30px rgba(0, 168, 255, 0.6);
+            color: white;
+        }
+
+        .control-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(0, 168, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .control-btn:active::after {
+            width: 100px;
+            height: 100px;
+        }
+
+        .play-pause {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #00a8ff 0%, #0097e6 100%);
+            color: white;
+            font-size: 2.2rem;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.4);
+        }
+
+        .play-pause:hover {
+            background: linear-gradient(135deg, #00b4ff 0%, #00a0ff 100%);
+            box-shadow: 0 15px 40px rgba(0, 168, 255, 0.6);
+        }
+
+        .progress-container {
+            margin-top: 40px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent);
+            animation: progressShine 2s infinite linear;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00a8ff, #4cd3ff);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s linear;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+        }
+
+        .progress-thumb {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 22px;
+            height: 22px;
+            background: #00a8ff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 2;
+            border: 2px solid white;
+        }
+
+        .progress-bar:hover .progress-thumb {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
+        }
+
+        /* Playlists Section */
+        .playlists-section {
+            padding: 80px 5%;
+            animation: fadeInUp 1s ease 0.7s both;
+            position: relative;
+        }
+
+        .playlists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .playlist-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(255, 255, 255, 0.02) 100%);
+        }
+
+        .playlist-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(0, 168, 255, 0.5),
+                transparent);
+        }
+
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { 
+                transform: translateY(0) rotateX(0);
+                box-shadow: 0 10px 30px rgba(0, 168, 255, 0.1);
+            }
+            50% { 
+                transform: translateY(-15px) rotateX(5deg);
+                box-shadow: 0 25px 50px rgba(0, 168, 255, 0.2);
+            }
+        }
+
+        .playlist-card:hover {
+            background: rgba(0, 168, 255, 0.15);
+            transform: translateY(-10px) scale(1.05);
+            border-color: #00a8ff;
+            box-shadow: 0 30px 60px rgba(0, 168, 255, 0.25);
+        }
+
+        .playlist-img {
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .playlist-card:hover .playlist-img {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 20px 40px rgba(0, 168, 255, 0.3);
+        }
+
+        .playlist-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
+        }
+
+        .playlist-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 5%;
+            background: rgba(10, 10, 15, 0.95);
+            border-top: 1px solid rgba(0, 168, 255, 0.3);
+            text-align: center;
+            animation: fadeInUp 1s ease 0.9s both;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(0, 168, 255, 0.5),
+                transparent);
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(90deg, #ffffff, #00a8ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 25px;
+            font-size: 1rem;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.1);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 1.8rem;
+            color: #00a8ff;
+        }
+
+        .social-icons i {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            text-shadow: 0 0 15px rgba(0, 168, 255, 0.3);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icons i:hover {
+            transform: translateY(-5px) scale(1.2);
+            color: white;
+            background: rgba(0, 168, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 168, 255, 0.4);
+        }
+
+        /* YouTube Container */
+        .youtube-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            z-index: -999;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .main-nav {
+                gap: 15px;
+                margin-left: 30px;
+            }
+            
+            .nav-link {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .main-nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin: 20px 0 0 0;
+            }
+            
+            .logo {
+                order: 1;
+            }
+            
+            .tagline {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .player-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+            
+            .album-art {
+                width: 280px;
+                height: 280px;
+            }
+            
+            #welcomeText {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            #playBtn {
+                justify-content: center;
+            }
+            
+            .player-controls {
+                gap: 20px;
+            }
+            
+            .control-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .play-pause {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            #songTitle {
+                font-size: 2.2rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 30px;
+            }
+            
+            .privacy-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-nav {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 5px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .playlists-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .album-art {
+                width: 240px;
+                height: 240px;
+            }
+            
+            #songTitle {
+                font-size: 1.8rem;
+            }
+            
+            .search-box {
+                padding: 25px;
+            }
+            
+            .player-container {
+                padding: 25px;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .footer-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+    <script>
+        // TASK: Page Navigation Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation functionality
+            const navLinks = document.querySelectorAll('.nav-link, .footer-link');
+            const pages = document.querySelectorAll('.page-content');
+            
+            // Set home as active by default
+            setActivePage('home');
+            
+            // Add click events to all navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('data-page');
+                    setActivePage(page);
+                    
+                    // Update URL hash for bookmarking
+                    window.location.hash = page;
+                });
+            });
+            
+            // Handle browser back/forward buttons
+            window.addEventListener('hashchange', function() {
+                const page = window.location.hash.substring(1) || 'home';
+                setActivePage(page);
+            });
+            
+            // Initialize intro animation and player
+            initIntroAnimation();
+            initPlayer();
+        });
+        
+        function setActivePage(page) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            // Show selected page
+            const activePage = document.getElementById(page + 'Page');
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+            
+            // Update navigation links
+            document.querySelectorAll('.nav-link, .footer-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === page) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top when switching pages
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Intro Animation
+        function initIntroAnimation() {
+            const introScreen = document.getElementById('introScreen');
+            const welcomeText = document.getElementById('welcomeText');
+            const mainContent = document.getElementById('mainContent');
+            const text = "Welcome To RJ Music";
+            const letters = text.split('');
+            
+            // Clear welcome text for letter animation
+            welcomeText.textContent = '';
+            
+            // Calculate center positions
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            // Create flying letters
+            letters.forEach((letter, index) => {
+                if(letter === ' ') letter = ' ';
+                const span = document.createElement('span');
+                span.textContent = letter;
+                span.className = 'letter';
+                span.style.position = 'absolute';
+                
+                // Random starting position outside screen
+                const side = Math.floor(Math.random() * 4);
+                let startX, startY;
+                
+                switch(side) {
+                    case 0: // Top
+                        startX = Math.random() * window.innerWidth;
+                        startY = -100;
+                        break;
+                    case 1: // Right
+                        startX = window.innerWidth + 100;
+                        startY = Math.random() * window.innerHeight;
+                        break;
+                    case 2: // Bottom
+                        startX = Math.random() * window.innerWidth;
+                        startY = window.innerHeight + 100;
+                        break;
+                    case 3: // Left
+                        startX = -100;
+                        startY = Math.random() * window.innerHeight;
+                        break;
+                }
+                
+                span.style.left = startX + 'px';
+                span.style.top = startY + 'px';
+                span.style.opacity = '1';
+                span.style.zIndex = '2';
+                introScreen.appendChild(span);
+                
+                // Calculate final position - perfectly centered for each letter
+                const textWidth = 35 * letters.length;
+                const letterCenterX = centerX - (textWidth / 2) + (index * 35) + 17.5;
+                const letterCenterY = centerY;
+                
+                // Animate to center position
+                setTimeout(() => {
+                    span.style.transition = 'all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    span.style.left = letterCenterX + 'px';
+                    span.style.top = letterCenterY + 'px';
+                    span.style.transform = 'translate(-50%, -50%)';
+                    
+                    // After letters arrive, show welcome text with scale-in effect
+                    if(index === letters.length - 1) {
+                        setTimeout(() => {
+                            // Remove flying letters with fade out
+                            document.querySelectorAll('.letter').forEach(el => {
+                                el.style.opacity = '0';
+                                el.style.transition = 'opacity 0.8s ease';
+                            });
+                            
+                            // Show welcome text with premium effects
+                            welcomeText.textContent = text;
+                            welcomeText.style.opacity = '1';
+                            welcomeText.style.animation = 'scaleIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards, softPulse 2s ease-in-out infinite 0.8s';
+                            
+                            // Enhanced glow effect
+                            welcomeText.style.textShadow = '0 0 40px rgba(0, 168, 255, 0.8), 0 0 80px rgba(0, 168, 255, 0.5), 0 0 120px rgba(0, 168, 255, 0.3)';
+                            
+                            // Transition to main content
+                            setTimeout(() => {
+                                welcomeText.style.opacity = '0';
+                                welcomeText.style.transition = 'opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1)';
+                                
+                                setTimeout(() => {
+                                    introScreen.style.opacity = '0';
+                                    introScreen.style.transition = 'opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1)';
+                                    
+                                    setTimeout(() => {
+                                        introScreen.style.display = 'none';
+                                        mainContent.style.opacity = '1';
+                                        mainContent.style.transform = 'translateY(0)';
+                                    }, 1200);
+                                }, 2000);
+                            }, 3000);
+                        }, 1000);
+                    }
+                }, 100 + (index * 60)); // Staggered delay for each letter
+            });
+        }
+
+        // YouTube Player Functions (Existing functionality)
+        let player;
+        let isPlaying = false;
+        let currentVideoId = 'dQw4w9WgXcQ';
+        
+        function initPlayer() {
+            // Load default video
+            loadYouTubeVideo(currentVideoId);
+            
+            // Play button event
+            document.getElementById('playBtn').addEventListener('click', function() {
+                const input = document.getElementById('searchInput').value.trim();
+                if(input) {
+                    processInput(input);
+                }
+            });
+            
+            // Play/Pause button
+            document.getElementById('playPauseBtn').addEventListener('click', togglePlay);
+            
+            // Progress bar click
+            const progressBar = document.getElementById('progressBar');
+            progressBar.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                if(player && player.seekTo) {
+                    player.seekTo(player.getDuration() * percent);
+                }
+            });
+            
+            // Simulate player updates
+            setInterval(updatePlayerProgress, 1000);
+            
+            // Enter key for search
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if(e.key === 'Enter') {
+                    document.getElementById('playBtn').click();
+                }
+            });
+            
+            // Enhanced input focus effects
+            document.getElementById('searchInput').addEventListener('focus', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 0 50px rgba(0, 168, 255, 0.7), inset 0 0 20px rgba(0, 168, 255, 0.15)';
+            });
+            
+            document.getElementById('searchInput').addEventListener('blur', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 0 30px rgba(0, 168, 255, 0.4), inset 0 0 10px rgba(0, 168, 255, 0.1)';
+            });
+        }
+        
+        function processInput(input) {
+            let videoId = extractVideoId(input);
+            
+            if(videoId) {
+                loadYouTubeVideo(videoId);
+                updateSongInfo('Custom Song', 'Your Selection');
+            } else {
+                // If not a URL, simulate search
+                updateSongInfo(input, 'Search Result');
+                // For demo, use a default video
+                loadYouTubeVideo('dQw4w9WgXcQ');
+            }
+        }
+        
+        function extractVideoId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+        
+        function loadYouTubeVideo(videoId) {
+            currentVideoId = videoId;
+            const iframe = document.getElementById('youtubePlayer');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&modestbranding=1&rel=0`;
+            iframe.style.display = 'block';
+            
+            if(window.YT) {
+                createPlayer();
+            } else {
+                // Load YouTube API
+                const tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                document.body.appendChild(tag);
+                
+                window.onYouTubeIframeAPIReady = createPlayer;
+            }
+        }
+        
+        function createPlayer() {
+            player = new YT.Player('youtubePlayer', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        
+        function onPlayerReady(event) {
+            updateSongInfo('Streaming Music', 'Now Playing');
+            updateTotalTime();
+        }
+        
+        function onPlayerStateChange(event) {
+            if(event.data === YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                updatePlayButton();
+                startAnimations();
+                triggerExcitementAnimation();
+            } else {
+                isPlaying = false;
+                updatePlayButton();
+                stopAnimations();
+                removeExcitementAnimation();
+            }
+        }
+        
+        function togglePlay() {
+            if(!player) return;
+            
+            if(isPlaying) {
+                player.pauseVideo();
+                removeExcitementAnimation();
+            } else {
+                player.playVideo();
+                triggerExcitementAnimation();
+            }
+            
+            isPlaying = !isPlaying;
+            updatePlayButton();
+            
+            if(isPlaying) {
+                startAnimations();
+            } else {
+                stopAnimations();
+            }
+        }
+        
+        function updatePlayButton() {
+            const playIcon = document.getElementById('playIcon');
+            const vinylDisc = document.querySelector('.vinyl-disc');
+            
+            if(isPlaying) {
+                playIcon.className = 'fas fa-pause';
+                vinylDisc.style.animationPlayState = 'running';
+            } else {
+                playIcon.className = 'fas fa-play';
+                vinylDisc.style.animationPlayState = 'paused';
+            }
+        }
+        
+        function triggerExcitementAnimation() {
+            const playerContainer = document.querySelector('.player-container');
+            const playButton = document.getElementById('playPauseBtn');
+            const playerSection = document.querySelector('.player-section');
+            
+            playerContainer.classList.add('playing');
+            playerSection.classList.add('playing');
+            
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.width = '100px';
+            ripple.style.height = '100px';
+            ripple.style.background = 'radial-gradient(circle, rgba(0,168,255,0.3) 0%, transparent 70%)';
+            ripple.style.borderRadius = '50%';
+            ripple.style.top = '50%';
+            ripple.style.left = '50%';
+            ripple.style.transform = 'translate(-50%, -50%)';
+            ripple.style.zIndex = '1';
+            ripple.style.animation = 'ripple 1s ease-out forwards';
+            playButton.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 1000);
+            
+            document.querySelectorAll('.equalizer .bar').forEach(bar => {
+                bar.style.animationDuration = '0.8s';
+                bar.style.animationTimingFunction = 'cubic-bezier(0.23, 1, 0.32, 1)';
+            });
+            
+            const albumCover = document.getElementById('albumCover');
+            albumCover.style.boxShadow = '0 0 40px rgba(0, 168, 255, 0.6), 0 20px 50px rgba(0, 0, 0, 0.7)';
+            albumCover.style.transform = 'translate(-50%, -50%) scale(1.05)';
+            
+            const vinylDisc = document.querySelector('.vinyl-disc');
+            vinylDisc.style.animation = 'rotate 15s linear infinite';
+        }
+        
+        function removeExcitementAnimation() {
+            const playerContainer = document.querySelector('.player-container');
+            const playerSection = document.querySelector('.player-section');
+            
+            playerContainer.classList.remove('playing');
+            playerSection.classList.remove('playing');
+            
+            const albumCover = document.getElementById('albumCover');
+            albumCover.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.6)';
+            albumCover.style.transform = 'translate(-50%, -50%)';
+            
+            const vinylDisc = document.querySelector('.vinyl-disc');
+            vinylDisc.style.animation = 'rotate 20s linear infinite paused';
+            
+            document.querySelectorAll('.equalizer .bar').forEach(bar => {
+                bar.style.animationDuration = '1.2s';
+                bar.style.animationTimingFunction = 'ease';
+            });
+        }
+        
+        function startAnimations() {
+            document.querySelector('.vinyl-disc').style.animationPlayState = 'running';
+            document.querySelectorAll('.equalizer .bar').forEach(bar => {
+                bar.style.animationPlayState = 'running';
+            });
+        }
+        
+        function stopAnimations() {
+            document.querySelector('.vinyl-disc').style.animationPlayState = 'paused';
+            document.querySelectorAll('.equalizer .bar').forEach(bar => {
+                bar.style.animationPlayState = 'paused';
+            });
+        }
+        
+        function updatePlayerProgress() {
+            if(player && player.getCurrentTime) {
+                const currentTime = player.getCurrentTime();
+                const duration = player.getDuration();
+                
+                if(duration > 0) {
+                    const percent = (currentTime / duration) * 100;
+                    document.getElementById('progressFill').style.width = percent + '%';
+                    document.getElementById('progressThumb').style.left = percent + '%';
+                    
+                    document.getElementById('currentTime').textContent = formatTime(currentTime);
+                    document.getElementById('totalTime').textContent = formatTime(duration);
+                }
+            }
+        }
+        
+        function updateTotalTime() {
+            if(player && player.getDuration) {
+                const duration = player.getDuration();
+                document.getElementById('totalTime').textContent = formatTime(duration);
+            }
+        }
+        
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+        
+        function updateSongInfo(title, artist) {
+            document.getElementById('songTitle').textContent = title;
+            document.getElementById('artistName').textContent = artist;
+            
+            const colors = [
+                ['#00a8ff', '#0097e6'],
+                ['#00a8ff', '#8c7ae6'],
+                ['#00a8ff', '#e84118'],
+                ['#00a8ff', '#44bd32'],
+                ['#00a8ff', '#fbc531'],
+                ['#00a8ff', '#9c88ff'],
+                ['#00a8ff', '#4cd137']
+            ];
+            const randomColors = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('albumCover').style.background = 
+                `linear-gradient(135deg, ${randomColors[0]}, ${randomColors[1]})`;
+            document.getElementById('albumCover').style.boxShadow = 
+                `0 20px 45px ${randomColors[0]}40, 0 10px 30px rgba(0, 0, 0, 0.6)`;
+        }
+        
+        // Simulate playlist clicks
+        document.querySelectorAll('.playlist-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                const artist = this.querySelector('p').textContent;
+                updateSongInfo(title, artist);
+                
+                if(isPlaying) {
+                    triggerExcitementAnimation();
+                }
+                
+                if(isPlaying) {
+                    player.pauseVideo();
+                    setTimeout(() => {
+                        player.playVideo();
+                    }, 500);
+                }
+            });
+        });
+        
+        // Simulate control buttons
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            const songs = [
+                {title: "Previous Track", artist: "Playlist"},
+                {title: "Morning Coffee", artist: "Chill Vibes"},
+                {title: "Focus Mode", artist: "Study Beats"}
+            ];
+            const randomSong = songs[Math.floor(Math.random() * songs.length)];
+            updateSongInfo(randomSong.title, randomSong.artist);
+            createButtonRipple(this);
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            const songs = [
+                {title: "Next Track", artist: "Playlist"},
+                {title: "Energy Boost", artist: "Workout Mix"},
+                {title: "Sunset Drive", artist: "Chill Vibes"}
+            ];
+            const randomSong = songs[Math.floor(Math.random() * songs.length)];
+            updateSongInfo(randomSong.title, randomSong.artist);
+            createButtonRipple(this);
+        });
+        
+        function createButtonRipple(button) {
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.width = '50px';
+            ripple.style.height = '50px';
+            ripple.style.background = 'radial-gradient(circle, rgba(0,168,255,0.4) 0%, transparent 70%)';
+            ripple.style.borderRadius = '50%';
+            ripple.style.top = '50%';
+            ripple.style.left = '50%';
+            ripple.style.transform = 'translate(-50%, -50%)';
+            ripple.style.zIndex = '1';
+            ripple.style.animation = 'ripple 0.6s ease-out forwards';
+            button.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+    </script>
+</body>
+</html>
