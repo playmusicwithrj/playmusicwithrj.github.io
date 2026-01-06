@@ -521,6 +521,96 @@
             }
         }
 
+        /* Intro Screen - Mobile Responsive */
+        #introScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .letter {
+            position: absolute;
+            font-weight: 900;
+            color: #00a8ff;
+            opacity: 0;
+            text-shadow: 0 0 15px #00a8ff, 0 0 30px #00a8ff;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(0 0 10px rgba(0, 168, 255, 0.7));
+            /* Mobile responsive font size */
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+        }
+
+        #welcomeText {
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-align: center;
+            opacity: 0;
+            background: linear-gradient(90deg, #00a8ff, #4cd3ff, #00a8ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: premiumGlow 2.5s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-origin: center center;
+            text-shadow: 0 0 30px rgba(0, 168, 255, 0.5),
+                         0 0 60px rgba(0, 168, 255, 0.3),
+                         0 0 90px rgba(0, 168, 255, 0.2);
+            /* Mobile responsive font size */
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            /* Adjust letter spacing for mobile */
+            letter-spacing: clamp(2px, 1vw, 4px);
+            /* Ensure text doesn't overflow */
+            max-width: 90%;
+            word-wrap: break-word;
+            white-space: normal;
+            padding: 0 10px;
+            line-height: 1.2;
+        }
+
+        @keyframes premiumGlow {
+            0%, 100% { 
+                background-position: 0% center;
+                filter: brightness(1) drop-shadow(0 0 20px rgba(0, 168, 255, 0.5));
+            }
+            50% { 
+                background-position: 100% center;
+                filter: brightness(1.2) drop-shadow(0 0 30px rgba(0, 168, 255, 0.8));
+            }
+        }
+
+        /* Mobile responsive animation keyframes */
+        @keyframes scaleIn {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        @keyframes softPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.02); }
+        }
+
+        /* Main Content */
+        #mainContent {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
         /* Reset & Base */
         * {
             margin: 0;
@@ -894,79 +984,6 @@
         .footer-link:hover {
             color: #00a8ff;
             background: rgba(0, 168, 255, 0.1);
-        }
-
-        /* Rest of existing CSS remains the same */
-        /* [All previous CSS code from player, search, etc. remains unchanged below] */
-        /* ... Existing CSS continues ... */
-
-        /* Intro Screen */
-        #introScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .letter {
-            position: absolute;
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: #00a8ff;
-            opacity: 0;
-            text-shadow: 0 0 15px #00a8ff, 0 0 30px #00a8ff;
-            z-index: 2;
-            pointer-events: none;
-            filter: drop-shadow(0 0 10px rgba(0, 168, 255, 0.7));
-        }
-
-        #welcomeText {
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-align: center;
-            opacity: 0;
-            background: linear-gradient(90deg, #00a8ff, #4cd3ff, #00a8ff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: premiumGlow 2.5s ease-in-out infinite;
-            position: relative;
-            z-index: 1;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            transform-origin: center center;
-            text-shadow: 0 0 30px rgba(0, 168, 255, 0.5),
-                         0 0 60px rgba(0, 168, 255, 0.3),
-                         0 0 90px rgba(0, 168, 255, 0.2);
-        }
-
-        @keyframes premiumGlow {
-            0%, 100% { 
-                background-position: 0% center;
-                filter: brightness(1) drop-shadow(0 0 20px rgba(0, 168, 255, 0.5));
-            }
-            50% { 
-                background-position: 100% center;
-                filter: brightness(1.2) drop-shadow(0 0 30px rgba(0, 168, 255, 0.8));
-            }
-        }
-
-        /* Main Content */
-        #mainContent {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-in-out, transform 1s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         /* Header */
@@ -1819,10 +1836,12 @@
             
             .logo {
                 order: 1;
+                font-size: 1.5rem;
             }
             
             .tagline {
                 order: 2;
+                font-size: 0.8rem;
             }
         }
 
@@ -1838,12 +1857,9 @@
                 height: 280px;
             }
             
-            #welcomeText {
-                font-size: 2.5rem;
-            }
-            
             .section-title {
                 font-size: 2.2rem;
+                margin-bottom: 30px;
             }
             
             .logo {
@@ -1852,10 +1868,13 @@
             
             .input-group {
                 flex-direction: column;
+                gap: 15px;
             }
             
             #playBtn {
                 justify-content: center;
+                padding: 15px 30px;
+                font-size: 1rem;
             }
             
             .player-controls {
@@ -1881,6 +1900,7 @@
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
                 padding: 30px;
+                gap: 20px;
             }
             
             .privacy-content {
@@ -1896,11 +1916,16 @@
                 font-size: 0.85rem;
                 padding: 5px 10px;
             }
+            
+            .search-box {
+                padding: 25px;
+            }
         }
 
         @media (max-width: 480px) {
             .playlists-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             
             .album-art {
@@ -1913,19 +1938,22 @@
             }
             
             .search-box {
-                padding: 25px;
+                padding: 20px;
             }
             
             .player-container {
-                padding: 25px;
+                padding: 20px;
+                gap: 30px;
             }
             
             .about-stats {
                 grid-template-columns: 1fr;
+                padding: 20px;
             }
             
             .team-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             
             .main-nav {
@@ -1941,6 +1969,89 @@
             
             .stat-number {
                 font-size: 2rem;
+            }
+            
+            .stat-label {
+                font-size: 0.9rem;
+            }
+            
+            .about-card, .legal-card, .privacy-card {
+                padding: 20px;
+            }
+            
+            .member-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+            
+            .music-note {
+                font-size: 1.5rem;
+            }
+            
+            .sound-wave {
+                height: 100px;
+            }
+            
+            /* Mobile specific adjustments for intro animation */
+            #welcomeText {
+                font-size: 2rem;
+                letter-spacing: 2px;
+                padding: 0 15px;
+                line-height: 1.1;
+            }
+            
+            .letter {
+                font-size: 1.5rem;
+            }
+            
+            /* Adjust animation timing for mobile */
+            .music-note {
+                animation-duration: 15s;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #welcomeText {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .player-container {
+                padding: 15px;
+            }
+            
+            .album-art {
+                width: 200px;
+                height: 200px;
+            }
+            
+            #songTitle {
+                font-size: 1.5rem;
+            }
+            
+            #artistName {
+                font-size: 1rem;
+            }
+            
+            .control-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .play-pause {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -2002,7 +2113,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Intro Animation
+        // Mobile Responsive Intro Animation
         function initIntroAnimation() {
             const introScreen = document.getElementById('introScreen');
             const welcomeText = document.getElementById('welcomeText');
@@ -2012,6 +2123,12 @@
             
             // Clear welcome text for letter animation
             welcomeText.textContent = '';
+            
+            // Mobile responsive settings
+            const isMobile = window.innerWidth <= 768;
+            const letterSpacing = isMobile ? 20 : 35;
+            const animationDelay = isMobile ? 80 : 60;
+            const fontSize = isMobile ? '1.5rem' : '2.8rem';
             
             // Calculate center positions
             const centerX = window.innerWidth / 2;
@@ -2024,26 +2141,30 @@
                 span.textContent = letter;
                 span.className = 'letter';
                 span.style.position = 'absolute';
+                span.style.fontSize = fontSize;
                 
                 // Random starting position outside screen
                 const side = Math.floor(Math.random() * 4);
                 let startX, startY;
                 
+                // Adjust starting positions for mobile
+                const offset = isMobile ? 50 : 100;
+                
                 switch(side) {
                     case 0: // Top
                         startX = Math.random() * window.innerWidth;
-                        startY = -100;
+                        startY = -offset;
                         break;
                     case 1: // Right
-                        startX = window.innerWidth + 100;
+                        startX = window.innerWidth + offset;
                         startY = Math.random() * window.innerHeight;
                         break;
                     case 2: // Bottom
                         startX = Math.random() * window.innerWidth;
-                        startY = window.innerHeight + 100;
+                        startY = window.innerHeight + offset;
                         break;
                     case 3: // Left
-                        startX = -100;
+                        startX = -offset;
                         startY = Math.random() * window.innerHeight;
                         break;
                 }
@@ -2055,8 +2176,8 @@
                 introScreen.appendChild(span);
                 
                 // Calculate final position - perfectly centered for each letter
-                const textWidth = 35 * letters.length;
-                const letterCenterX = centerX - (textWidth / 2) + (index * 35) + 17.5;
+                const textWidth = letterSpacing * letters.length;
+                const letterCenterX = centerX - (textWidth / 2) + (index * letterSpacing) + (letterSpacing / 2);
                 const letterCenterY = centerY;
                 
                 // Animate to center position
@@ -2099,9 +2220,9 @@
                                     }, 1200);
                                 }, 2000);
                             }, 3000);
-                        }, 1000);
+                        }, isMobile ? 800 : 1000);
                     }
-                }, 100 + (index * 60)); // Staggered delay for each letter
+                }, 100 + (index * animationDelay)); // Staggered delay for each letter
             });
         }
 
